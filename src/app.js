@@ -34,7 +34,7 @@ app.use(express.json());
   
   app.get("/", (req, res) => {
     res.send("hello world");
-  });
+  })
 
   const start = () => {
     ConnectDB()
