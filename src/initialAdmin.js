@@ -46,6 +46,6 @@ const initializeAdmin = async () => {
     await mongoose.connection.close(); 
     console.log('MongoDB connection closed');
   }
-};
+}
 
 initializeAdmin();
