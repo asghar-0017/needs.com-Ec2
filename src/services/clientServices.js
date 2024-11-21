@@ -29,7 +29,7 @@ const sendEmail =async (usermail,code)=>{
 
     try {
         await transporter.sendMail({
-            from: 'yehlay@gmail.com',
+            from: 'rajaasgharali009@gmail.com',
             to: usermail,
             subject: 'Password Reset Request',
             html: htmlContent,

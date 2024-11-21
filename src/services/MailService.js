@@ -17,7 +17,7 @@ const Mail = async (data) => {
 
     // Email to the user
     const mailUser = {
-      from: process.env.SMTP_USER, // sender email
+      from: 'rajaasgharali009@gmail.com', // sender email
       to: data.email, // recipient email
       subject: data.subject, // subject
       text: `
@@ -29,8 +29,8 @@ const Mail = async (data) => {
 
     // Email to the admin
     const mailClient = {
-      from: process.env.SMTP_USER, // sender email
-      to: process.env.ADMIN_EMAIL, // admin email
+      from: 'rajaasgharali009@gmail.com', // sender email
+      to: 'rajaasgharali009@gmail.com', // admin email
       subject: `New Message: ${data.subject}`, // subject
       text: `
         Name: ${data.name}
