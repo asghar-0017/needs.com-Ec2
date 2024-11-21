@@ -13,25 +13,26 @@ jobs:
         uses: actions/checkout@v4
       
       - name: Login to Docker Hub
-        run: docker login -u asghar0017 -p Asghar@786
+        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
         
       - name: Build Docker Image
-        run: docker build -t asghar0017/nodejs-app .
-
+        run: docker build -t asghar0017/nodejs-app:latest .
+      
       - name: Publish Image to Docker Hub
-        run: docker push asghar0017/nodejs-app:latest 
+        run: docker push asghar0017/nodejs-app:latest
 
   deploy:
-    needs: build
-    runs-on: self-hosted 
+    # Remove 'needs: build' since it fetches the image from Docker Hub
+    runs-on: self-hosted
     steps:
-      - name: Pull image from Docker Hub
+      - name: Pull Docker Image
         run: docker pull asghar0017/nodejs-app:latest
-      
-      - name: Delete old container
-        run: docker rm -f nodejs-app-container || true  
+
+      - name: Delete Old Container
+        run: docker rm -f nodejs-app-container || true
 
       - name: Run Docker Container
-        run: docker run -d -p 3001:3001 --name nodejs-app-container \
-          -e MONGO_PASSWORD='mongodb+srv://fa21bscs7860:PyENalk60fjxwBrf@cluster0.nmg20.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0' \
-          asghar0017/nodejs-app
+        run: |
+          docker run -d -p 3001:3001 --name nodejs-app-container \
+            -e MONGO_PASSWORD="mongodb+srv://fa21bscs7860:PyENalk60fjxwBrf@cluster0.nmg20.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0" \
+            asghar0017/nodejs-app
