@@ -1,5 +1,7 @@
 const jwt = require("jsonwebtoken"); // Use the correct package
 const nodemailer = require('nodemailer');
+const dotenv=require('dotenv')
+dotenv.config()
 const generateToken = (userId) => {
     return jwt.sign({ email: userId }, "yehlay", { expiresIn: '1h' });
 };
@@ -12,8 +14,8 @@ const sendEmail =async (usermail,code)=>{
         port: 587,
         secure: false, // or 'STARTTLS'
         auth: {
-            user: 'fa21bscs0017@maju.edu.pk',
-            pass: "eoeb amae fgaw adeu",
+            user: process.env.EMAIL,
+            pass: process.env.EMAIL_PASS,
         }
     });
 
