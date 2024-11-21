@@ -48,4 +48,4 @@ const initializeAdmin = async () => {
   }
 }
 
-initializeAdmin();
+initializeAdmin()
