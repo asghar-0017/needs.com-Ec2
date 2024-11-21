@@ -9,13 +9,13 @@ const generateToken = (userId) => {
 
 const sendEmail =async (usermail,code)=>{
     const resetUrl = `http://localhost:3000/reset-password?email=${encodeURIComponent(usermail)}`;
-    
+
     let transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user: process.env.SMTP_USER,
-            pass: process.env.SMTP_PASS
-        }
+          user: 'rajaasgharali009@gmail.com',
+          pass: 'qofo ycaw fued syct'
+      }
     });
 
     const htmlContent = `
