@@ -10,9 +10,9 @@ const billingDetailMail = async (data) => {
       port: 587,
       secure: false,
       auth: {
-        user: 'fa21bscs0017@maju.edu.pk', // Replace with your email
-        pass: 'eoeb amae fgaw adeu', // Replace with your Gmail app password
-      },
+        user: 'rajaasgharali009@gmail.com',
+        pass: 'qofo ycaw fued syct',
+    }
     });
 
     const productsInfo = data.products.map(product =>
