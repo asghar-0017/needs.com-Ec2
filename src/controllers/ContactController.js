@@ -4,6 +4,7 @@ const Mail = require("../services/MailService");
 const Contactus = async (req, res) => {
   try {
     const data = req.body;
+    console.log("Data",data)
         const result = await Mail(data);
     
     if (result === true) {
